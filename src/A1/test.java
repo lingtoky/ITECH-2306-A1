@@ -5,6 +5,7 @@ public class test {
         System.out.println("测试");
         System.out.println("测试");
         System.out.println("测试");
+        System.out.println("dev->test02");
         System.out.println("master->test01");
     }
 }
