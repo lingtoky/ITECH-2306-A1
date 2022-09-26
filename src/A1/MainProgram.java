@@ -9,18 +9,37 @@ public class MainProgram {
 
         ArrayList<Order> orderArrayList=new ArrayList<Order>();
 
-//        setCustomer();
-        int flag=1;
-        while (flag==1){
-            setDish(orderArrayList);
-            showOrder(orderArrayList);
-            System.out.println("Do you want to keep ordering? (Type 1 to continue, 0 to exit) :");
-            flag=scan.nextInt();
-            if (flag==0){
-                break;
+        boolean stillRunning = false;
+        do {
+            setCustomer();
+            int flag=1;
+            while (flag==1){
+                setDish(orderArrayList);
+                showOrder(orderArrayList);
+                System.out.println("Do you want to keep ordering? (Type 1 to continue, 0 to exit) :");
+                flag=scan.nextInt();
+                scan.nextLine();
+                if (flag==0){
+                    for (int i = 0; i <orderArrayList.size(); ) {
+                        orderArrayList.remove(i);
+                    }
+                    System.out.println("Do you want to enter another order for home delivery? (y/n):");
+                    String userInput;
+                    userInput= scan.nextLine();
+                    char yes='y';
+                    char no='n';
+                    if((userInput.charAt(0)==yes)){
+                        stillRunning=true;
+                        System.out.println();
+                    }else if(userInput.charAt(0)==no){
+                        stillRunning=false;
+                    }else{
+                        System.out.println("Incorrect input.");
+                    }
+                }
             }
-        }
 
+        }while (stillRunning);
     }
 
     public static void setCustomer(){
