@@ -162,7 +162,7 @@ public class MainProgram {
         System.out.println("Ordered items:");
         for (int i = 0; i < orderArrayList.size(); i++) {
             Order order=orderArrayList.get(i);
-            System.out.println(order.getPer()+" x "+order.getDishName()+"("+order.getDishPrice()+" each)");
+            System.out.println(order.getPer()+" x "+order.getDishName()+"("+order.getDishPrice()+" each)"+"\t"+order.getDishPrice()* order.getPer());
             sum+=order.getDishPrice()* order.getPer();
         }
         if (sum>=100){
