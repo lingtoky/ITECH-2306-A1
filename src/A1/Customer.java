@@ -4,7 +4,7 @@ public class Customer {
     private String name;
     private String day;
     private String time;
-    private String adress;
+    private String address;
 
     public String getName() {
         return name;
@@ -30,12 +30,12 @@ public class Customer {
         this.time = time;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String adress) {
+        this.address = adress;
     }
 
     public String getPhoneNumber() {
@@ -55,7 +55,7 @@ public class Customer {
         this.name = name;
         this.day = day;
         this.time = time;
-        this.adress = adress;
+        this.address = adress;
         this.phoneNumber = phoneNumber;
     }
 
@@ -65,7 +65,7 @@ public class Customer {
                 "name='" + name + '\'' +
                 ", day='" + day + '\'' +
                 ", time='" + time + '\'' +
-                ", adress='" + adress + '\'' +
+                ", adress='" + address + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
