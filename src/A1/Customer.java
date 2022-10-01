@@ -4,7 +4,7 @@ public class Customer {
     private String name;
     private String day;
     private String time;
-    private String adress;
+    private String address;
 
     public String getName() {
         return name;
@@ -31,11 +31,11 @@ public class Customer {
     }
 
     public String getAdress() {
-        return adress;
+        return address;
     }
 
     public void setAdress(String adress) {
-        this.adress = adress;
+        this.address = adress;
     }
 
     public String getPhoneNumber() {
@@ -51,11 +51,11 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String name, String day, String time, String adress, String phoneNumber) {
+    public Customer(String name, String day, String time, String address, String phoneNumber) {
         this.name = name;
         this.day = day;
         this.time = time;
-        this.adress = adress;
+        this.address = address;
         this.phoneNumber = phoneNumber;
     }
 
@@ -65,7 +65,7 @@ public class Customer {
                 "name='" + name + '\'' +
                 ", day='" + day + '\'' +
                 ", time='" + time + '\'' +
-                ", adress='" + adress + '\'' +
+                ", adress='" + address + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }

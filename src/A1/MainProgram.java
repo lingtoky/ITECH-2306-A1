@@ -11,25 +11,31 @@ public class MainProgram {
 
         boolean anotherOrder = true;
         while(anotherOrder){
-//            setCustomer();
-
-            setDish(orderArrayList);
-            for (int i = 0; i <orderArrayList.size();) {
-                orderArrayList.remove(i);
-            }
+            Customer customer=setCustomer();
+            setDish(orderArrayList,customer);
             System.out.println("Do you want to enter another order for home delivery? (y/n):");
             String userInput;
             userInput= scan.nextLine();
-            char yes='y';
-            char no='n';
-            if(userInput.charAt(0)==no){
+            if(userInput.charAt(0)=='n'){
+                System.out.println("--------------------------------------------------");
+                showCustomer(customer);
+                showOrder(orderArrayList);
+                System.out.println("--------------------------------------------------");
                 anotherOrder=false;
                 System.out.println("Thank you.");
+            } else if (userInput.charAt(0)=='y') {
+                System.out.println("--------------------------------------------------");
+                showCustomer(customer);
+                showOrder(orderArrayList);
+                System.out.println("--------------------------------------------------");
+                for (int i = 0; i <orderArrayList.size();) {
+                    orderArrayList.remove(i);
+                }
             }
         }
     }
 
-    public static void setCustomer(){
+    public static Customer setCustomer(){
         String name;
         String adress;
         String day;
@@ -41,7 +47,7 @@ public class MainProgram {
         System.out.println("Workout Foods");
         System.out.print("Please enter the name of the customer making a booking:");
         name=scan.nextLine();
-        System.out.print("What is the date the food is required(eg:15/09/22): ");
+        System.out.print("What is the date the food is required(eg:15/09/22):");
         day=scan.nextLine();
         System.out.print("What is the time for the home delivery(eg:10:00 am):");
         time=scan.nextLine();
@@ -51,9 +57,10 @@ public class MainProgram {
         phoneNumber=scan.nextLine();
         System.out.print("Thankyou.");
         Customer aCustomer=new Customer(name,day,time,adress,phoneNumber);
+        return aCustomer;
     }
 
-    public static void setDish(ArrayList<Order> orderArrayList) {
+    public static void setDish(ArrayList<Order> orderArrayList,Customer customer) {
         Scanner scan=new Scanner(System.in);
         boolean stillRunnin=true;
         while (stillRunnin){
@@ -121,6 +128,7 @@ public class MainProgram {
                     showOrder(orderArrayList);
                     break;
                 default:
+                    System.out.println("Wrong input!");
                     stillRunnin=false;
                     break;
             }
@@ -139,12 +147,11 @@ public class MainProgram {
     }
 
     public static void showOrder(ArrayList<Order> orderArrayList){
-        System.out.println("-----------------------------------------------------");
         double sum=0;
         System.out.println("Ordered items:");
         for (int i = 0; i < orderArrayList.size(); i++) {
             Order order=orderArrayList.get(i);
-            System.out.println(order.getPer()+" x "+order.getDishName()+"("+order.getDishPrice()+" each)"+"\t"+order.getDishPrice()* order.getPer());
+            System.out.println(order.getPer()+" x "+order.getDishName()+"("+order.getDishPrice()+" each)"+"----------"+order.getDishPrice()* order.getPer());
             sum+=order.getDishPrice()* order.getPer();
         }
         if (sum>=100){
@@ -154,6 +161,13 @@ public class MainProgram {
             System.out.println("Total cost (includes $5 delivery fee): $"+(sum+5));
             System.out.println();
         }
-        System.out.println("-----------------------------------------------------");
+    }
+
+    public static void showCustomer(Customer customer){
+        System.out.println("Name:"+customer.getName());
+        System.out.println("Adress:"+customer.getAdress());
+        System.out.println("PhoneNumber:"+customer.getPhoneNumber());
+        System.out.println("Date:"+customer.getDay());
+        System.out.println("Time:"+customer.getTime());
     }
 }
