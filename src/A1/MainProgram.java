@@ -12,7 +12,7 @@ public class MainProgram {
         boolean anotherOrder = true;
         while(anotherOrder){
             Customer customer=setCustomer();
-            setDish(orderArrayList,customer);
+            selectDish(orderArrayList);
             System.out.println("Do you want to enter another order for home delivery? (y/n):");
             String userInput;
             userInput= scan.nextLine();
@@ -60,7 +60,17 @@ public class MainProgram {
         return aCustomer;
     }
 
-    public static void setDish(ArrayList<Order> orderArrayList,Customer customer) {
+    public static void setDish(String dishName,ArrayList<Order> orderArrayList,double price){
+        Scanner scan=new Scanner(System.in);
+        System.out.print("How many "+dishName+" ("+price+"$ each) "+ "would you like:");
+        int per= scan.nextInt();
+        scan.nextLine();
+        Order o1=new Order(dishName,price,per);
+        orderArrayList.add(o1);
+        showOrder(orderArrayList);
+    }
+
+    public static void selectDish(ArrayList<Order> orderArrayList) {
         Scanner scan=new Scanner(System.in);
         boolean stillRunnin=true;
         while (stillRunnin){
@@ -68,64 +78,29 @@ public class MainProgram {
             System.out.print("What would you like to add to the booking order:");
             String dishName=scan.nextLine();
 
-            int per;
+//            int per;
 
             switch (dishName){
                 case "Chicken & Chorizo Paella 360g":
-                    System.out.print("How many "+dishName+" ("+9.95+"$ each) "+ "would you like:");
-                    per= scan.nextInt();
-                    scan.nextLine();
-                    Order o1=new Order(dishName,9.95,per);
-                    orderArrayList.add(o1);
-                    showOrder(orderArrayList);
+                    setDish(dishName,orderArrayList,9.95);
                     break;
                 case "Low carb Moussaka":
-                    System.out.print("How many "+dishName+" ("+10.5+"$ each) "+ "would you like:");
-                    per= scan.nextInt();
-                    scan.nextLine();
-                    Order o2=new Order(dishName,10.5,per);
-                    orderArrayList.add(o2);
-                    showOrder(orderArrayList);
+                    setDish(dishName,orderArrayList,10.5);
                     break;
                 case "Vitality Veggie":
-                    System.out.print("How many "+dishName+" ("+13.95+"$ each) "+ "would you like:");
-                    per= scan.nextInt();
-                    scan.nextLine();
-                    Order o3=new Order(dishName,13.95,per);
-                    orderArrayList.add(o3);
-                    showOrder(orderArrayList);
+                    setDish(dishName,orderArrayList,13.95);
                     break;
                 case "Angus Beef & Veg Lasagne":
-                    System.out.print("How many "+dishName+" ("+15.50+"$ each) "+ "would you like:");
-                    per= scan.nextInt();
-                    scan.nextLine();
-                    Order o4=new Order(dishName,15.50,per);
-                    orderArrayList.add(o4);
-                    showOrder(orderArrayList);
+                    setDish(dishName,orderArrayList,15.50);
                     break;
                 case "Chicken  Cacciatore & Roast Pumpkin":
-                    System.out.print("How many "+dishName+" ("+11.95+"$ each) "+ "would you like:");
-                    per= scan.nextInt();
-                    scan.nextLine();
-                    Order o5=new Order(dishName,11.95,per);
-                    orderArrayList.add(o5);
-                    showOrder(orderArrayList);
+                    setDish(dishName,orderArrayList,11.95);
                     break;
                 case "Healthy Meal Kit for 2 people":
-                    System.out.print("How many "+dishName+" ("+23.49+"$ each) "+ "would you like:");
-                    per= scan.nextInt();
-                    scan.nextLine();
-                    Order o6=new Order(dishName,23.49,per);
-                    orderArrayList.add(o6);
-                    showOrder(orderArrayList);
+                    setDish(dishName,orderArrayList,23.49);
                     break;
                 case "Value 10 Complete Meal Box":
-                    System.out.print("How many "+dishName+" ("+123+"$ each) "+ "would you like:");
-                    per= scan.nextInt();
-                    scan.nextLine();
-                    Order o7=new Order(dishName,123,per);
-                    orderArrayList.add(o7);
-                    showOrder(orderArrayList);
+                    setDish(dishName,orderArrayList,123);
                     break;
                 default:
                     System.out.println("Wrong input!");
