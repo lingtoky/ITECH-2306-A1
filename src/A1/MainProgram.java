@@ -12,7 +12,19 @@ public class MainProgram {
         boolean anotherOrder = true;
         while(anotherOrder){
             Customer customer=setCustomer();
+            boolean flag=false;
             selectDish(orderArrayList);
+            do{
+                System.out.println("Do you want to enter another dish for oder? (y/n):");
+                char choice=scan.nextLine().charAt(0);
+                if (choice=='y'){
+                    selectDish(orderArrayList);
+                }
+                else
+                {
+                    flag=true;
+                }
+            }while(flag!=true);
             System.out.println("Do you want to enter another order for home delivery? (y/n):");
             String userInput;
             userInput= scan.nextLine();
@@ -56,6 +68,7 @@ public class MainProgram {
         System.out.print("What is a phone number for the customer:");
         phoneNumber=scan.nextLine();
         System.out.print("Thankyou.");
+        System.out.println();
         Customer aCustomer=new Customer(name,day,time,adress,phoneNumber);
         return aCustomer;
     }
@@ -73,40 +86,32 @@ public class MainProgram {
     public static void selectDish(ArrayList<Order> orderArrayList) {
         Scanner scan=new Scanner(System.in);
         boolean stillRunnin=true;
-        while (stillRunnin){
-            showMeue();
-            System.out.print("What would you like to add to the booking order:");
-            String dishName=scan.nextLine();
+        showMeue();
+        System.out.print("What would you like to add to the booking order:");
+        String dishName=scan.nextLine();
 
-//            int per;
-
-            switch (dishName){
-                case "Chicken & Chorizo Paella 360g":
-                    setDish(dishName,orderArrayList,9.95);
-                    break;
-                case "Low carb Moussaka":
-                    setDish(dishName,orderArrayList,10.5);
-                    break;
-                case "Vitality Veggie":
-                    setDish(dishName,orderArrayList,13.95);
-                    break;
-                case "Angus Beef & Veg Lasagne":
-                    setDish(dishName,orderArrayList,15.50);
-                    break;
-                case "Chicken  Cacciatore & Roast Pumpkin":
-                    setDish(dishName,orderArrayList,11.95);
-                    break;
-                case "Healthy Meal Kit for 2 people":
-                    setDish(dishName,orderArrayList,23.49);
-                    break;
-                case "Value 10 Complete Meal Box":
-                    setDish(dishName,orderArrayList,123);
-                    break;
-                default:
-                    System.out.println("Wrong input!");
-                    stillRunnin=false;
-                    break;
-            }
+        switch (dishName){
+            case "Chicken & Chorizo Paella 360g":
+                setDish(dishName,orderArrayList,9.95);
+                break;
+            case "Low carb Moussaka":
+                setDish(dishName,orderArrayList,10.5);
+                break;
+            case "Vitality Veggie":
+                setDish(dishName,orderArrayList,13.95);
+                break;
+            case "Angus Beef & Veg Lasagne":
+                setDish(dishName,orderArrayList,15.50);
+                break;
+            case "Chicken  Cacciatore & Roast Pumpkin":
+                setDish(dishName,orderArrayList,11.95);
+                break;
+            case "Healthy Meal Kit for 2 people":
+                setDish(dishName,orderArrayList,23.49);
+                break;
+            case "Value 10 Complete Meal Box":
+                setDish(dishName,orderArrayList,123);
+                break;
         }
     }
 
